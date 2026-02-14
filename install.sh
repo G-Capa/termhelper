@@ -16,8 +16,26 @@ if ! ollama list | grep -q tinyllama; then
     ollama pull tinyllama
 fi
 
-# Install the package
-pip install git+https://github.com/G-Capa/termhelper.git
+# Check if pipx is installed
+if ! command -v pipx &> /dev/null; then
+    echo "pipx not found. Installing pipx..."
+    if command -v apt &> /dev/null; then
+        sudo apt update && sudo apt install -y pipx
+        pipx ensurepath
+    elif command -v brew &> /dev/null; then
+        brew install pipx
+        pipx ensurepath
+    else
+        python3 -m pip install --user pipx
+        python3 -m pipx ensurepath
+    fi
+    echo "Please restart your shell or run: source ~/.bashrc (or ~/.zshrc)"
+    echo "Then run this install script again."
+    exit 0
+fi
+
+# Install the package using pipx
+pipx install git+https://github.com/G-Capa/termhelper.git
 
 echo "✓ TermHelper installed successfully!"
 echo "Ready to use: termhelp \"your question here\""

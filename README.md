@@ -9,20 +9,41 @@ Then again, it is meant for **practice**
 
 - Python 3.8+
 - Ollama (install from https://ollama.ai)
+- pipx (recommended for installation)
 
 ## Installation
 
-One command to install everything (pulls tinyllama model if needed):
+### Automatic Installation (Recommended)
+
+One command to install everything (installs pipx if needed, pulls tinyllama model):
 
 ```bash
 curl -sSL https://raw.githubusercontent.com/G-Capa/termhelper/main/install.sh | bash
 ```
 
-Or manually:
+### Manual Installation
+
+First, ensure pipx is installed:
 ```bash
-pip install git+https://github.com/G-Capa/termhelper.git
+# On Ubuntu/Debian
+sudo apt install pipx
+pipx ensurepath
+
+# On macOS
+brew install pipx
+pipx ensurepath
+
+# Or using pip
+python3 -m pip install --user pipx
+python3 -m pipx ensurepath
 ```
-(If tinyllama isn't installed, run: `ollama pull tinyllama`)
+
+Then install termhelper:
+```bash
+pipx install git+https://github.com/G-Capa/termhelper.git
+```
+
+If tinyllama isn't installed, run: `ollama pull tinyllama`
 
 ## Quick Start
 
@@ -87,6 +108,17 @@ ollama pull <model-name>
 ```
 
 ## Troubleshooting
+
+### "externally-managed-environment" Error
+If you see this error during installation:
+```
+error: externally-managed-environment
+```
+
+This is a Python safety feature on newer systems. Solutions:
+1. **Use pipx (recommended)**: `sudo apt install pipx && pipx install git+https://github.com/G-Capa/termhelper.git`
+2. **Re-run the install script**: It will automatically install pipx for you
+3. After installing pipx, restart your shell or run: `source ~/.zshrc` (or `~/.bashrc`)
 
 ### "Cannot connect to Ollama"
 - Make sure Ollama is running: `termhelp activate`
