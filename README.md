@@ -15,16 +15,17 @@ Then again, it is meant for **practice**. Namely Python packages, CLI tool dev, 
 
 ### Automatic Installation (Recommended)
 
-First, install Ollama if you haven't already:
-```bash
-curl -fsSL https://ollama.ai/install.sh | sh
-```
-
-Then install termhelper (installs pipx if needed, pulls tinyllama model):
+One command to install everything (Ollama, pipx, termhelper, and tinyllama model):
 
 ```bash
 curl -sSL https://raw.githubusercontent.com/G-Capa/termhelper/main/install.sh | bash
 ```
+
+This will automatically:
+- Install Ollama if not present
+- Install pipx if needed
+- Install termhelper
+- Pull the tinyllama model
 
 ### Manual Installation
 
@@ -152,22 +153,34 @@ curl -X POST http://localhost:11434/api/generate \
 
 ## Uninstallation
 
-### If installed with pipx
+### Automatic Uninstallation (Recommended)
+```bash
+curl -sSL https://raw.githubusercontent.com/G-Capa/termhelper/main/uninstall.sh | bash
+```
+
+This will:
+- Uninstall termhelper
+- Optionally uninstall Ollama (you'll be prompted)
+
+### Manual Uninstallation
+
+If installed with pipx:
 ```bash
 pipx uninstall termhelper
 ```
 
-### If installed manually with pip
+If installed manually with pip:
 ```bash
 pip uninstall termhelper
 ```
 
-### Clean up Ollama (optional)
-To remove installed models:
+To manually uninstall Ollama:
 ```bash
-ollama rm tinyllama
+sudo systemctl stop ollama
+sudo systemctl disable ollama
+sudo rm /usr/local/bin/ollama
+sudo rm -rf /usr/share/ollama ~/.ollama
+sudo rm /etc/systemd/system/ollama.service
 ```
-
-To completely uninstall Ollama, follow instructions at https://ollama.ai
 
 

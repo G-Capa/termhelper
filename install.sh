@@ -3,11 +3,11 @@ set -e
 
 echo "Installing TermHelper..."
 
-# Check if Ollama is installed
+# Check if Ollama is installed, install if not
 if ! command -v ollama &> /dev/null; then
-    echo "Error: Ollama is not installed."
-    echo "Please install Ollama from https://ollama.ai"
-    exit 1
+    echo "Ollama not found. Installing Ollama..."
+    curl -fsSL https://ollama.ai/install.sh | sh
+    echo "✓ Ollama installed successfully"
 fi
 
 # Start Ollama if not running
