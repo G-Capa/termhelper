@@ -3,7 +3,7 @@
 An AI language helper for the terminal powered by Ollama. Get shell command suggestions using natural language queries.
 
 This is a study project meant to teach me about the basics of incorporating AI with python and using local models. This isnt very efficient as there are a number of other models that do exactly what I have done here in a more professional way.
-Then again, it is meant for **practice** 
+Then again, it is meant for **practice**. Namely Python packages, CLI tool dev, process management and AI.
 
 ## Prerequisites
 
