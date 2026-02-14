@@ -15,7 +15,12 @@ Then again, it is meant for **practice**. Namely Python packages, CLI tool dev, 
 
 ### Automatic Installation (Recommended)
 
-One command to install everything (installs pipx if needed, pulls tinyllama model):
+First, install Ollama if you haven't already:
+```bash
+curl -fsSL https://ollama.ai/install.sh | sh
+```
+
+Then install termhelper (installs pipx if needed, pulls tinyllama model):
 
 ```bash
 curl -sSL https://raw.githubusercontent.com/G-Capa/termhelper/main/install.sh | bash

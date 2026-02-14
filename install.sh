@@ -10,6 +10,13 @@ if ! command -v ollama &> /dev/null; then
     exit 1
 fi
 
+# Start Ollama if not running
+if ! pgrep -f "ollama serve" > /dev/null; then
+    echo "Starting Ollama..."
+    ollama serve > /dev/null 2>&1 &
+    sleep 3
+fi
+
 # Check if tinyllama model is installed
 if ! ollama list | grep -q tinyllama; then
     echo "Pulling tinyllama model (this may take a few minutes)..."
