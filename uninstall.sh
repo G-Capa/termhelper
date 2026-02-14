@@ -3,7 +3,6 @@ set -e
 
 echo "Uninstalling TermHelper..."
 
-# Uninstall termhelper
 if command -v pipx &> /dev/null; then
     if pipx list | grep -q termhelper; then
         pipx uninstall termhelper
@@ -15,7 +14,6 @@ else
     echo "pipx not found, skipping termhelper uninstall"
 fi
 
-# Ask if user wants to uninstall Ollama
 read -p "Do you want to uninstall Ollama as well? (y/N): " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]; then
