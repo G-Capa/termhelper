@@ -5,6 +5,10 @@ setup(
     version="0.1.0",
     description="An AI language helper for the terminal powered by Ollama",
     packages=find_packages(),
+    package_data={
+        "termhelper": [".env"],
+    },
+    include_package_data=True,
     install_requires=[
         "requests==2.31.0",
         "charset-normalizer==3.3.2",
